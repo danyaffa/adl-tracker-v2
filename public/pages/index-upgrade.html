@@ -1,0 +1,39 @@
+<!-- index-upgrade.html -->
+<div id="upgrade-modal" class="modal">
+  <div class="bg-white rounded-2xl max-w-6xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+    <div class="p-8 border-b">
+      <div class="flex justify-between items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900">⭐ Upgrade Your Plan</h2>
+          <p class="text-gray-600 mt-2">Choose the plan that fits your business needs</p>
+        </div>
+        <button onclick="closeModal('upgrade-modal')" class="text-gray-400 hover:text-gray-600 text-3xl font-bold">×</button>
+      </div>
+    </div>
+
+    <div class="p-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- STARTER PLAN -->
+        <div class="pricing-card border-2 border-green-300">
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">Starter Plan</h3>
+            <div class="text-5xl font-bold text-green-600 mb-1">$10</div>
+            <div class="text-gray-600">per month</div>
+          </div>
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center space-x-3"><span class="text-green-500 text-xl">✓</span><span class="font-medium">5 campaigns maximum</span></div>
+            <div class="flex items-center space-x-3"><span class="text-green-500 text-xl">✓</span><span class="font-medium">10 AI generations/month</span></div>
+            <div class="flex items-center space-x-3"><span class="text-green-500 text-xl">✓</span><span class="font-medium">Universal tracking</span></div>
+            <div class="flex items-center space-x-3"><span class="text-green-500 text-xl">✓</span><span class="font-medium">Basic analytics</span></div>
+            <div class="flex items-center space-x-3"><span class="text-green-500 text-xl">✓</span><span class="font-medium">Email support</span></div>
+            <div class="flex items-center space-x-3"><span class="text-green-500 text-xl">✓</span><span class="font-medium">Fraud protection</span></div>
+          </div>
+          <button onclick="selectPlan('starter', 10)" class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-bold text-lg transition-colors">
+            🚀 Choose Starter
+          </button>
+        </div>
+
+        <!-- PRO PLAN -->
+        <div class="pricing-card popular border-2 border-blue-500">
+          <div cla
