@@ -1,0 +1,50 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ADL Tracker Platform</title>
+
+  <!-- Tailwind CSS -->
+  <link href="input.css" rel="stylesheet" />
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="pages/ADL_logo.png" />
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Root container -->
+  <div id="app"></div>
+
+  <!-- Modular injection script -->
+  <script>
+    const partials = [
+      'index-header.html',
+      'index-dashboard.html',
+      'index-upgrade.html',
+      'index-account.html',
+      'index-payment.html',
+      'index-campaign.html',
+      'index-ai.html',
+      'index-instructions.html',
+      'index-contact.html',
+      'index-review.html',
+      'index-ads-strip.html',
+      'index-notifications.html',
+      'index-footer.html'
+    ];
+
+    const app = document.getElementById('app');
+
+    partials.forEach(file => {
+      fetch(`pages/${file}`)
+        .then(res => res.text())
+        .then(html => {
+          const section = document.createElement('div');
+          section.innerHTML = html;
+          app.appendChild(section);
+        });
+    });
+  </script>
+</body>
+</html>
