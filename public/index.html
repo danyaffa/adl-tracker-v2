@@ -5,49 +5,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ADL Tracker Platform</title>
-
-  <!-- Tailwind CSS Output -->
   <link href="output.css" rel="stylesheet" />
-
-  <!-- Favicon -->
   <link rel="icon" href="pages/ADL_logo.png" />
 </head>
 <body class="bg-gray-50 text-gray-800">
   <!-- Root container -->
-  <div id="app"></div>
+  <div id="app">
+    <!-- Static homepage structure -->
+    <div id="header"></div>
+    <div id="dashboard"></div>
+    <div id="footer"></div>
+  </div>
 
-  <!-- Modular injection script -->
+  <!-- Load core sections only -->
   <script>
-    const partials = [
-      'index-header.html',
-      'index-dashboard.html',
-      'index-upgrade.html',
-      'index-account.html',
-      'index-payment.html',
-      'index-campaign.html',
-      'index-ai.html',
-      'index-instructions.html',
-      'index-contact.html',
-      'index-review.html',
-      'index-ads-strip.html',
-      'index-notifications.html',
-      'index-footer.html'
-    ];
-
-    const app = document.getElementById('app');
-
-    partials.forEach(file => {
+    const loadSection = (id, file) => {
       fetch(`pages/${file}`)
         .then(res => res.text())
         .then(html => {
-          const section = document.createElement('div');
-          section.innerHTML = html;
-          app.appendChild(section);
+          document.getElementById(id).innerHTML = html;
         });
-    });
+    };
+
+    loadSection('header', 'index-header.html');
+    loadSection('dashboard', 'index-dashboard.html');
+    loadSection('footer', 'index-footer.html');
   </script>
 
+  <!-- Load hidden modals on click -->
+  <div id="modals"></div>
+  <script>
+    const openModal = (file) => {
+      fetch(`pages/${file}`).then(res => res.text()).then(html => {
+        document.getElementById('modals').innerHTML = html;
+      });
+    };
+
+    // Attach openModal to buttons via class or custom events
+  </script>
+
+  <!-- Include optional JS for modal closing -->
   <script src="js/modal-handler.js"></script>
 </body>
 </html>
-
