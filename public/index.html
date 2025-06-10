@@ -1,14 +1,22 @@
+<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ADL Tracker Platform</title>
+
+  <!-- Tailwind CSS Output -->
   <link href="output.css" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="pages/ADL_logo.png" />
 </head>
 <body class="bg-gray-50 text-gray-800">
+  <!-- Root container -->
   <div id="app"></div>
 
+  <!-- Modular injection script -->
   <script>
     const partials = [
       'index-header.html',
@@ -25,7 +33,9 @@
       'index-notifications.html',
       'index-footer.html'
     ];
+
     const app = document.getElementById('app');
+
     partials.forEach(file => {
       fetch(`pages/${file}`)
         .then(res => res.text())
@@ -36,5 +46,8 @@
         });
     });
   </script>
+
+  <script src="js/modal-handler.js"></script>
 </body>
 </html>
+
