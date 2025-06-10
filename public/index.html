@@ -3,20 +3,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ADL Tracker Platform</title>
 
-  <!-- Tailwind CSS (compiled output) -->
+  <!-- Tailwind CSS compiled output -->
   <link href="output.css" rel="stylesheet" />
 
-  <!-- Favicon (optional) -->
+  <!-- Favicon / Logo -->
   <link rel="icon" href="pages/ADL_logo.png" />
 </head>
 <body class="bg-gray-50 text-gray-800">
-  <!-- Root container -->
   <div id="app"></div>
 
-  <!-- Modular HTML Loader -->
   <script>
     const partials = [
       'index-header.html',
@@ -35,7 +33,6 @@
     ];
 
     const app = document.getElementById('app');
-
     partials.forEach(file => {
       fetch(`pages/${file}`)
         .then(res => res.text())
