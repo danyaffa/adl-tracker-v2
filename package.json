@@ -1,13 +1,1 @@
-{
-  "name": "adl-tracker-v2",
-  "version": "1.0.0",
-  "scripts": {
-    "build": "npx tailwindcss -i ./input.css -o ./public/output.css --minify",
-    "start": "npx serve public"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.15",
-    "postcss": "^8.4.24",
-    "tailwindcss": "^3.4.1"
-  }
-}
+{ "name": "adl-platform", "version": "1.0.0", "scripts": { "build": "npx tailwindcss -i ./input.css -o ./public/output.css --minify", "start": "npx serve public" }, "devDependencies": { "tailwindcss": "^3.0.0", "autoprefixer": "^10.0.0", "serve": "^14.0.0" } }
