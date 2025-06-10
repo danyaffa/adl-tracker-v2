@@ -1,0 +1,81 @@
+<!-- index-dashboard.html -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+  
+  <!-- QUICK ACTIONS -->
+  <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
+    <button onclick="createCampaign()" class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-xl font-bold transition-all transform hover:scale-105">
+      🚀 Create Campaign
+    </button>
+    <button onclick="generateAIAd()" class="bg-purple-600 hover:bg-purple-700 text-white p-4 rounded-xl font-bold transition-all transform hover:scale-105">
+      🤖 AI Generator
+    </button>
+    <button onclick="showInstructions()" class="bg-green-600 hover:bg-green-700 text-white p-4 rounded-xl font-bold transition-all transform hover:scale-105">
+      📚 Instructions
+    </button>
+    <button onclick="showContact()" class="bg-cyan-600 hover:bg-cyan-700 text-white p-4 rounded-xl font-bold transition-all transform hover:scale-105">
+      📞 Contact
+    </button>
+    <button onclick="showReview()" class="bg-yellow-600 hover:bg-yellow-700 text-white p-4 rounded-xl font-bold transition-all transform hover:scale-105">
+      ⭐ Review
+    </button>
+    <button onclick="showUpgrade()" class="bg-gradient-to-r from-yellow-500 to-orange-500 hover:shadow-lg text-white p-4 rounded-xl font-bold transition-all transform hover:scale-105">
+      ⭐ Upgrade Plan
+    </button>
+  </div>
+
+  <!-- PERFORMANCE METRICS -->
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div class="bg-white p-6 rounded-xl border-2 border-blue-100 hover:shadow-lg transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-sm font-bold text-blue-600">TOTAL CLICKS</span>
+        <span class="text-2xl">👆</span>
+      </div>
+      <div id="total-clicks" class="text-3xl font-bold text-gray-900">0</div>
+      <div class="text-sm text-gray-500 mt-1">Real-time tracking active</div>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl border-2 border-green-100 hover:shadow-lg transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-sm font-bold text-green-600">CONVERSIONS</span>
+        <span class="text-2xl">🎯</span>
+      </div>
+      <div id="total-conversions" class="text-3xl font-bold text-gray-900">0</div>
+      <div class="text-sm text-gray-500 mt-1">Cross-platform attribution</div>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl border-2 border-yellow-100 hover:shadow-lg transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-sm font-bold text-yellow-600">REVENUE</span>
+        <span class="text-2xl">💰</span>
+      </div>
+      <div id="total-revenue" class="text-3xl font-bold text-gray-900">$0</div>
+      <div class="text-sm text-gray-500 mt-1">Revenue attribution</div>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl border-2 border-purple-100 hover:shadow-lg transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-sm font-bold text-purple-600">ROAS</span>
+        <span class="text-2xl">📈</span>
+      </div>
+      <div id="total-roas" class="text-3xl font-bold text-gray-900">0.0x</div>
+      <div class="text-sm text-gray-500 mt-1">Return on ad spend</div>
+    </div>
+  </div>
+
+  <!-- CAMPAIGNS SECTION -->
+  <div class="bg-white rounded-xl p-6 border-2 border-gray-100">
+    <div class="flex justify-between items-center mb-6">
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900">Active Campaigns</h2>
+        <p class="text-gray-600">Universal tracking across all platforms</p>
+      </div>
+      <button onclick="refreshData()" class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors">
+        🔄 Refresh
+      </button>
+    </div>
+
+    <div id="campaigns-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Dynamic campaign cards rendered by JavaScript -->
+    </div>
+  </div>
+</main>
