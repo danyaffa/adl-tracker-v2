@@ -1,0 +1,97 @@
+<!-- index-payment.html -->
+<div id="payment-modal" class="modal">
+  <div class="bg-white rounded-2xl max-w-md w-full mx-4 p-8">
+    <div class="text-center mb-6">
+      <div class="text-4xl mb-3">💳</div>
+      <h3 class="text-2xl font-bold text-gray-900 mb-1">Secure Checkout</h3>
+      <p class="text-gray-600">Step 2 of 2: Payment Information</p>
+    </div>
+
+    <!-- Payment Method Tabs -->
+    <div class="mb-6 flex justify-center gap-4">
+      <button onclick="switchPayment('card')" class="tab-button text-blue-600 font-semibold">💳 Credit Card</button>
+      <button onclick="switchPayment('paypal')" class="tab-button text-yellow-500 font-semibold">🅿️ PayPal</button>
+    </div>
+
+    <!-- Credit Card Form -->
+    <form id="payment-form-card" class="space-y-6">
+      <div>
+        <label class="block text-sm font-bold text-gray-700 mb-2">Cardholder Name *</label>
+        <input type="text" id="card-name" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 focus:outline-none" placeholder="John Smith">
+      </div>
+      <div>
+        <label class="block text-sm font-bold text-gray-700 mb-2">Card Number *</label>
+        <input type="text" id="card-number" required maxlength="19" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 focus:outline-none" placeholder="1234 5678 9012 3456">
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-bold text-gray-700 mb-2">Expiry Date *</label>
+          <input type="text" id="card-expiry" required maxlength="5" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 focus:outline-none" placeholder="MM/YY">
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-gray-700 mb-2">CVC *</label>
+          <input type="text" id="card-cvc" required maxlength="4" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 focus:outline-none" placeholder="123">
+        </div>
+      </div>
+      <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-bold text-lg transition-colors">
+        ✅ Confirm & Pay
+      </button>
+    </form>
+
+    <!-- PayPal Form -->
+    <div id="payment-form-paypal" class="hidden space-y-4">
+      <p class="text-sm text-gray-700">You will be redirected to PayPal to complete your purchase securely.</p>
+      <div id="paypal-button-container"></div>
+    </div>
+
+    <!-- Cancel -->
+    <button type="button" onclick="closeModal('payment-modal')" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 mt-4 rounded-xl font-medium transition-colors">
+      Cancel
+    </button>
+
+    <!-- Info -->
+    <div class="text-center mt-6 text-sm text-gray-500">
+      <p>🔐 Your payment is processed securely using Stripe & PayPal</p>
+      <p>✔️ 256-bit encryption • PCI Compliant • Instant Confirmation</p>
+      <p class="text-xs mt-2 text-blue-600">🧪 Demo Mode: No real transaction will occur</p>
+    </div>
+  </div>
+</div>
+
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=AQ9Z_b27DGHqF2t25eqlVMJRmFInh39Unpvb0PiZV4gw4hPdSuKNwU-285q8V43dkDVG7ylzRfnt8MA5&currency=USD"></script>
+
+<script>
+function switchPayment(method) {
+  const cardForm = document.getElementById('payment-form-card');
+  const paypalForm = document.getElementById('payment-form-paypal');
+
+  cardForm.style.display = method === 'card' ? 'block' : 'none';
+  paypalForm.style.display = method === 'paypal' ? 'block' : 'none';
+
+  if (method === 'paypal') {
+    setTimeout(() => {
+      const container = document.getElementById('paypal-button-container');
+      if (!container.hasChildNodes()) {
+        paypal.Buttons({
+          createOrder: function(data, actions) {
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: '29.00' // 💲 Replace with dynamic plan price if needed
+                }
+              }]
+            });
+          },
+          onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+              alert('✅ Payment completed by ' + details.payer.name.given_name + '!');
+              closeModal('payment-modal');
+            });
+          }
+        }).render('#paypal-button-container');
+      }
+    }, 300);
+  }
+}
+</script>
