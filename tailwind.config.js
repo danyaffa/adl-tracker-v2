@@ -1,8 +1,7 @@
-// tailwind.config.js
 module.exports = {
   content: [
-    "./index.html",
-    "./pages/**/*.{html,js}"
+    "./public/index.html",
+    "./public/pages/**/*.{html,js}"
   ],
   theme: {
     extend: {
@@ -12,23 +11,5 @@ module.exports = {
       }
     }
   },
-  plugins: [],
-}
-
-// postcss.config.js
-module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-}
-
-/* styles/input.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Optional custom styles */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  plugins: []
 }
