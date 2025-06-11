@@ -1,9 +1,8 @@
-// js/navigation-handler.js
-function loadPage(pageFile) {
-  const app = document.getElementById('app');
-  fetch(`pages/${pageFile}`)
+
+function navigateTo(page) {
+  fetch('pages/' + page)
     .then(res => res.text())
     .then(html => {
-      app.innerHTML = html;
+      document.getElementById('app').innerHTML = html;
     });
 }
